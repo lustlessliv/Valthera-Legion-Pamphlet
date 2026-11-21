@@ -54,7 +54,7 @@ h2{font:700 clamp(1.5rem,6vw,2.2rem)/1.2 'Cinzel',serif;letter-spacing:.06em;tex
 .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .about{max-width:62ch;margin:0 auto;text-align:center;color:var(--parch)}
 .about p{margin:0 0 28px}
-/* pangkat */
+/*rank */
 .ranks{list-style:none;margin:0;padding:0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:r}
 .ranks li{counter-increment:r;text-align:center}
 .ranks .tier{display:block;font:700 .7rem 'Cinzel',serif;letter-spacing:.25em;color:#8a6418;margin-bottom:6px}
@@ -73,7 +73,7 @@ h2{font:700 clamp(1.5rem,6vw,2.2rem)/1.2 'Cinzel',serif;letter-spacing:.06em;tex
 .site-foot .ed{letter-spacing:.08em;color:var(--goldl)}
 .site-foot a{text-decoration:none;border-bottom:1px solid rgba(227,201,133,.45)}
 .site-foot a:hover{color:#fff;border-color:#fff}
-/* muncul saat gulir */
+/* scroll */
 .rv{opacity:0;transform:translateY(18px);filter:blur(3px);transition:opacity .9s ease,transform .9s ease,filter .9s ease}
 .rv.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none;filter:none}.ember{display:none}}
@@ -154,25 +154,21 @@ h2{font:700 clamp(1.5rem,6vw,2.2rem)/1.2 'Cinzel',serif;letter-spacing:.06em;tex
 (function(){
   var $=function(s){return document.querySelector(s)};
 
-  /* ===== PENGATURAN: isi bagian ini ===== */
-  /* Link untuk menghubungi Triune lewat Discord */
   var DISCORD_URL='https://discord.com/users/971994729833197589';
-  /* Link untuk menghubungi Triune lewat WhatsApp, mis. 'https://wa.me/628xxxxxxxxxx' */
   var WHATSAPP_URL='https://wa.me/qr/QJ52J3W6H6NIL1';
-  /* ====================================== */
 
-  /* bintang + partikel segitiga */
+  /* particles */
   for(var s=0;s<44;s++){var st=document.createElement('span');st.className='star';st.style.left=Math.random()*100+'%';st.style.top=Math.random()*80+'%';st.style.animationDuration=(2+Math.random()*4)+'s';st.style.animationDelay=(Math.random()*4)+'s';document.body.appendChild(st)}
   for(var i=0;i<14;i++){var e=document.createElement('span');e.className='ember';e.style.left=Math.random()*100+'%';e.style.setProperty('--dx',(Math.random()*80-40)+'px');e.style.animationDuration=(7+Math.random()*7)+'s';e.style.animationDelay=(Math.random()*8)+'s';document.body.appendChild(e)}
 
-  /* muncul saat gulir */
+  /* scroll */
   var rv=document.querySelectorAll('.rv');
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
     rv.forEach(function(n){io.observe(n)});
   }else{rv.forEach(function(n){n.classList.add('in')})}
 
-  /* tombol hubungi Triune */
+  /* Triune */
   function wire(id,url,msg){
     var a=$(id);
     if(url)a.href=url;
